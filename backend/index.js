@@ -2,6 +2,7 @@ import express from "express";
 import {PORT, mongoDBURL} from "./config.js";
 import mongoose  from "mongoose";
 import {Book} from './models/bookModel.js';
+//import appUpdate from "./routes/addBook.js"
 
 const app = express();
 
@@ -72,7 +73,7 @@ app.get('/books/:id', async (request, response) => {
 
 // route for UPDATING Book
 
-app.get('/books/:id', async (request, response) => {
+app.put('/books/:id', async (request, response) => {
     try {
         if(
             !request.body.title ||
