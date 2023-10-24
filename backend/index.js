@@ -2,11 +2,10 @@ import express from "express";
 import {PORT, mongoDBURL} from "./config.js";
 import mongoose  from "mongoose";
 import {Book} from './models/bookModel.js';
-//import appUpdate from "./routes/addBook.js"
 
 const app = express();
 
-//middleware for parsing request body
+// ----------------- middleware for parsing request body -----------------
 app.use(express.json());
 
 app.get('/', (request, response) => {
@@ -14,7 +13,7 @@ app.get('/', (request, response) => {
     return response.status(234).send("Making a MERN Stack!")
 });
 
-//route for Save a new book
+// ----------------- route for Save a new book -----------------
 
 app.post('/books', async (request, response) => {
     try {
@@ -42,7 +41,7 @@ app.post('/books', async (request, response) => {
     }
 });
 
-// Route to Get All Books from DB
+// ----------------- Route to Get All Books from DB -----------------
 app.get('/books', async (request, response) => {
     try {
         const books = await Book.find({});
@@ -56,7 +55,7 @@ app.get('/books', async (request, response) => {
     }
 });
 
-// Route to Get ONE Book from DB by id
+// ----------------- Route to Get ONE Book from DB by id -----------------
 app.get('/books/:id', async (request, response) => {
     try {
         
@@ -71,7 +70,7 @@ app.get('/books/:id', async (request, response) => {
     }
 }); 
 
-// route for UPDATING Book
+// ----------------- route for UPDATING Book -----------------
 
 app.put('/books/:id', async (request, response) => {
     try {
